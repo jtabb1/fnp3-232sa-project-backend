@@ -10,19 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_203348) do
+ActiveRecord::Schema.define(version: 2021_08_05_172400) do
 
-  create_table "gym_members", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "focus"
-    t.integer "gym_id"
-    t.index ["gym_id"], name: "index_gym_members_on_gym_id"
+    t.string "demand_trend"
+    t.boolean "is_demand_trend"
   end
 
-  create_table "gyms", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "location"
-    t.integer "monthly_price"
+    t.integer "price"
+    t.integer "cost"
+    t.integer "qty"
+    t.string "demand_trend"
+    t.boolean "is_demand_trend"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
 end
