@@ -8,21 +8,10 @@ Category.destroy_all
 ## Create Resource
 #
 
-c_trends = [
-  'ct1', 'ct2'
-]
-
-c_names = [
-  "A", "B", "C", "D", "E", "F", "G", "H", "I", 
-  "J", "K", "L", "M", "N", "O", "P", "Q", "R", 
-  "S", "T", "U", "V", "W", "X", "Y", "Z"
-]
 
 4.times do |i|
   Category.create(
-    name: "#{c_names[i]}", 
-    demand_trend: c_trends.sample,
-    is_demand_trend: false
+    name: "C#{i+1}", 
   )
 end
 
@@ -34,30 +23,19 @@ puts 'Categories Seeded'
 
 categories = Category.all
 
-p_trends = [
-  'pt1', 'pt2'
-]
-
-p_costs = [
-  200, 700, 1400
-]
-
-p_profits = [
-  0.2, 0.4, 0.8
+p_price = [
+  694, 997, 1995, 248799
 ]
 
 p_qty = [
-  0, 2, 1000
+  0, 2, 20, 2000
 ]
 
 10.times do |i|
     Product.create(
       name: "p#{i+1}", 
-      price: (p_costs.sample * (1 + p_profits.sample)).floor(), 
-      cost: p_costs.sample,
+      price: p_price.sample, 
       qty: p_qty.sample,
-      demand_trend: p_trends.sample,
-      is_demand_trend: false,
       category: categories.sample
     )
 end

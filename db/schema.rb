@@ -14,17 +14,12 @@ ActiveRecord::Schema.define(version: 2021_08_05_172400) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "demand_trend"
-    t.boolean "is_demand_trend"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.integer "cost"
     t.integer "qty"
-    t.string "demand_trend"
-    t.boolean "is_demand_trend"
     t.integer "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
