@@ -26,11 +26,6 @@ c_names = [
   )
 end
 
-# Category.create(name: "A", demand_trend: c_trends.sample, is_demand_trend: false)
-# Category.create(name: "B", demand_trend: c_trends.sample, is_demand_trend: false)
-# Category.create(name: "C", demand_trend: c_trends.sample, is_demand_trend: false)
-# Category.create(name: "D", demand_trend: c_trends.sample, is_demand_trend: false)
-
 puts 'Categories Seeded'
 
 
