@@ -4,6 +4,16 @@ class Application
     res = Rack::Response.new
     req = Rack::Request.new(env)
 
+    # SIMULATION ROUTES
+
+    # Intended for Simulation, try with showing categories first:
+
+    if req.path == ('/simulate') && req.get?
+      return [200, {'Content-Type' => 'application/json'}, [Product.all.to_json]]
+    end
+
+    ####
+
     # PRODUCT ROUTES
 
     # Product Index
