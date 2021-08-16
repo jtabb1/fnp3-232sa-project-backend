@@ -4,12 +4,32 @@ class Application
     res = Rack::Response.new
     req = Rack::Request.new(env)
 
-    # SIMULATION ROUTES
+    # JOIN ROUTES
 
-    # Intended for Simulation, try with showing categories first:
+    # Intended for JoinTable, try with showing categories first:
 
-    if req.path == ('/simulate') && req.get?
+    if req.path == ('/joins') && req.get?
       return [200, {'Content-Type' => 'application/json'}, [Product.all.to_json]]
+    end
+
+    # SELLER ROUTES
+
+    # Intended for , try with showing categories first:
+
+    if req.path == ('/sellers') && req.get?
+      return [200, {'Content-Type' => 'application/json'}, [Seller.all.to_json]]
+    end
+
+    # Seller Show
+
+    if req.path.match('/sellers/sim') && req.get?
+      # id = req.path.split('/')[2]
+      begin
+        sellers = Seller.all
+        return [200, {'Content-Type' => 'application/json'}, [sellers.as_json(include: [:products, :categories]).to_json]]
+      rescue
+        return [404, {'Content-Type' => 'application/json'}, [{message: "Product not found"}.to_json]]
+      end
     end
 
     ####
@@ -76,7 +96,7 @@ class Application
       end
     end
 
-    # GYM ROUTES
+    # CATEGORY ROUTES
 
     # Category Index
 
